@@ -36,13 +36,26 @@
 <p>Photographer. Poet. Software developer.</p>
 
 <div class="link-space">
-    <h3>Links</h3>
+    <h3>Profile Links</h3>
 
     <a href="https://photos.app.goo.gl/HNtbenLVGJCz7ALAA">Portfolio</a>
     <a href="https://www.instagram.com/slouch.potato/">Instagram</a>
     <a href="https://linkedin.com/in/anushachoudhary/">LinkedIn</a>
 
 </div>
+
+<div id="gphoto"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js"></script>
+
+<script>
+new PublicAlbumEmbed({
+  container: "#gphoto",
+  albumId: "HNtbenLVGJCz7ALAA",
+  layout: "grid",
+  columns: 4
+});
+</script>
 
 </body>
 </html>
