@@ -43,21 +43,59 @@
 
 </div>
 
-<div id="gphoto"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js"></script>
+<title>Photo Gallery</title>
 
+<style>
 
-<script>
-new PublicAlbumEmbed({
-  container: "#gphoto",
-  albumUrl: "https://photos.app.goo.gl/HNtbenLVGJCz7ALAA",
-  layout: "grid",
-  columns: 4
-});
-</script>
+body{
+    margin:40px;
+    font-family:Arial, sans-serif;
+}
 
+/* Grid layout */
 
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+    gap:12px;
+}
+
+/* Images */
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:8px;
+    transition:transform .2s;
+}
+
+.gallery img:hover{
+    transform:scale(1.04);
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Portfolio</h2>
+
+<div class="gallery">
+
+<img src="https://photos.app.goo.gl/P6HQT9yRZyPJmXyVA">
+<img src="https://photos.app.goo.gl/88CbFB3mBTUqpr6Q8">
+<img src="https://photos.app.goo.gl/KWdPq7yg1CuBEAHT7">
+<img src="https://photos.app.goo.gl/13w4WsDFSnHfL8TSA">
+<img src="https://photos.app.goo.gl/N72ppVBpHbsRMxBu9">
+<img src="https://photos.app.goo.gl/Yu5AUG8e6boJxs7K7">
+<img src="https://photos.app.goo.gl/EN25dKB1jkJ9pmuJ6">
+<img src="https://photos.app.goo.gl/8Cmb8SRaiZCWAbcM9">
+<img src="https://photos.app.goo.gl/jY1pyPan9P1wD8QX6">
+<img src="https://photos.app.goo.gl/cyjysS7tbAUssyDMA">
+
+</div>
 
 </body>
 </html>
