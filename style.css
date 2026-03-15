@@ -7,6 +7,32 @@ body{
     color:#333;
 }
 
+/* About Me Section */
+.about-me {
+    max-width: 700px;         /* keeps text easy to read */
+    margin: 40px auto;        /* center section on the page */
+    padding: 30px 25px;       /* space inside the box */
+    background-color: #f9f9f9; /* light background for contrast */
+    border-left: 5px solid #4CAF50; /* subtle accent color on the side */
+    border-radius: 8px;        /* rounded corners for modern look */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* soft shadow */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;               /* dark text for readability */
+    line-height: 1.7;          /* spacing between lines */
+    font-size: 1.05rem;        /* slightly larger than default for comfort */
+  }
+  
+  .about-me h2 {
+    color: #4CAF50;            /* matches accent border */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .about-me p {
+    margin-bottom: 15px;
+  }
+
 /* Header banner */
 header{
     background:#ea8000; /* amber */
