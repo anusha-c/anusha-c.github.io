@@ -42,29 +42,16 @@ body{
 header{
     background: linear-gradient(135deg, #6b0039, #ff3f5e); /* deep sunset gradient */
     color:white;
-    padding:80px 20px;             /* taller header to fit large text */
+    padding:60px 20px;
     text-align:center;
     position: relative;
 }
 
 header h1{
     margin:0 auto;
-    width: 95%;                    /* nearly full width */
-    font-size: 6vw;                /* responsive large size */
-    line-height: 1.1;
-    text-align: center;
-    color: #ff9a56;
-    transition: text-shadow 0.3s ease, transform 0.3s ease;
-}
-
-/* Scroll glow effect */
-header h1.glow {
-    text-shadow: 
-        0 0 10px #ff6b35,
-        0 0 20px #ff9a56,
-        0 0 30px #ff3f5e,
-        0 0 40px #ff6b35,
-        0 0 50px #ff9a56;
+    width: 80%;
+    font-size:3rem;
+    line-height:1.2;
 }
 
 header p{
