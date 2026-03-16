@@ -3,54 +3,61 @@ body{
     font-family: 'Noto Serif Display', serif;
     margin:0;
     padding:0;
-    background:#10021e;
-    color:#ffffff;
+    background:#10021e;           /* deep night background */
+    color:#ffe6cc;                /* soft cream text */
 }
 
 /* About Me Section */
 .about-me {
-    font-family: 'Noto Serif Display', serif;
-    max-width: 700px;         /* keeps text easy to read */
-    margin: 40px auto;        /* center section on the page */
-    padding: 30px 25px;       /* space inside the box */
-    background-color: #ffffff; /* light background for contrast */
-    border-left: 5px solid #a53d00; /* subtle accent color on the side */
-    border-radius: 8px;        /* rounded corners for modern look */
-    box-shadow: 0 4px 12px rgba(221, 167, 167, 0.1); /* soft shadow */
-    color: #080028;               /* dark text for readability */
-    line-height: 1.7;          /* spacing between lines */
-    font-size: 1.05rem;        /* slightly larger than default for comfort */
-  }
-  
-  .about-me h2 {
-    color: #76172f;            /* matches accent border */
-    font-size: 1.8rem;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px 25px;
+    background: linear-gradient(135deg, #2b002b, #4e003e); /* dark sunset gradient */
+    border-left: 5px solid #ff6b35;                        /* sunset accent */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(255,107,53,0.3);
+    color: #ffe6cc;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.about-me:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255,107,53,0.5);
+}
+
+.about-me h2 {
+    color: #ff9a56;   /* bright sunset highlight */
+    font-size: 2rem;
     margin-bottom: 15px;
-    font-weight: 600;
-  }
-  
-  .about-me p {
+    font-weight: 700;
+}
+
+.about-me p {
     margin-bottom: 15px;
-  }
+}
 
 /* Header banner */
 header{
-    background:#88004f; /* amber */
+    background: linear-gradient(135deg, #6b0039, #ff3f5e); /* deep sunset gradient */
     color:white;
     padding:60px 20px;
     text-align:center;
+    position: relative;
 }
 
 header h1{
-    margin:0;
+    margin:0 auto;
     width: 80%;
-    font-size:2.8rem;
-
+    font-size:3rem;
+    line-height:1.2;
 }
 
 header p{
     margin-top:10px;
-    font-size:1.2rem;
+    font-size:1.3rem;
+    color: #ffe6cc;
 }
 
 /* Navigation */
@@ -59,8 +66,8 @@ nav{
     justify-content:center;
     gap:30px;
     padding:15px 0;
-    background:rgb(238, 197, 130);
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    background:#330022;
+    box-shadow:0 2px 12px rgba(0,0,0,0.5);
     position:sticky;
     top:0;
     z-index:100;
@@ -69,18 +76,16 @@ nav{
 nav a{
     text-decoration:none;
     font-weight:bold;
-    color:#ffe0c6;
-    transition:color .2s;
+    color:#ffbf80;
+    transition: color .3s, transform .3s;
 }
 
 nav a:hover{
-    color:#ce4100;
+    color:#ff6b35;
+    transform: scale(1.1);
 }
 
-
-
 /* Pricing section */
-
 .pricing-container{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
@@ -89,37 +94,34 @@ nav a:hover{
 }
 
 /* Card */
-
 .pricing-card{
     padding:25px;
-    border-radius:10px;
-    background:white;
-    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    border-radius:12px;
+    background: linear-gradient(135deg, #2b002b, #4e003e);
+    box-shadow:0 6px 20px rgba(255,107,53,0.3);
     text-align:center;
-    transition:transform .2s ease, box-shadow .2s ease;
+    transition:transform .3s ease, box-shadow .3s ease;
 }
 
 .pricing-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    transform:translateY(-7px);
+    box-shadow:0 12px 35px rgba(255,107,53,0.5);
 }
-
-/* Text */
 
 .pricing-card h3{
     margin-bottom:10px;
-    color:#080028;
+    color:#ff9a56;
 }
 
 .time{
-    color:#666;
+    color:#d9a566;
     margin-bottom:15px;
 }
 
 .price{
     font-size:22px;
     font-weight:bold;
-    color:#ce4100;
+    color:#ff6b35;
 }
 
 .contact-btn {
@@ -127,23 +129,21 @@ nav a:hover{
     margin-top: 15px;
     padding: 10px 20px;
     font-weight: bold;
-    color: #ce4100;           /* amber border text */
-    background: white;         /* initial background */
-    border: 2px solid #ce4100; /* amber border */
+    color: #ff6b35;
+    background: #330022;
+    border: 2px solid #ff6b35;
     border-radius: 8px;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-    background: #ce4100;  /* amber fill on hover */
-    color: rgb(255, 255, 255);          /* text turns white */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: #ff6b35;
+    color: #10021e;
+    box-shadow: 0 6px 20px rgba(255,107,53,0.5);
 }
 
-
-/* gallery */
-
+/* Gallery */
 .gallery{
     display:grid;
     grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
@@ -154,12 +154,13 @@ nav a:hover{
     width:100%;
     height:100%;
     object-fit:cover;
-    border-radius:8px;
-    transition:transform .2s;
+    border-radius:12px;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .gallery img:hover{
-    transform:scale(1.04);
+    transform:scale(1.05);
+    box-shadow: 0 8px 20px rgba(255,107,53,0.4);
 }
 
 /* Card container */
@@ -172,52 +173,50 @@ nav a:hover{
     padding:0 20px;
 }
 
-/* Individual card */
 .card{
     padding:25px;
     border-radius:12px;
-    background:white;
-    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    background: linear-gradient(135deg, #2b002b, #4e003e);
+    box-shadow:0 6px 20px rgba(255,107,53,0.3);
     text-align:center;
-    transition:transform .2s, box-shadow .2s;
+    transition:transform .3s ease, box-shadow .3s ease;
 }
 
 .card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    transform:translateY(-7px);
+    box-shadow:0 12px 35px rgba(255,107,53,0.5);
 }
 
 .card h3{
     margin-bottom:15px;
-    color:#080028;
+    color:#ff9a56;
 }
 
-/* Buttons inside card */
 .card a{
     display:inline-flex;
     align-items:center;
     gap:8px;
     margin-top:10px;
     padding:10px 18px;
-    background:white;
-    border:2px solid #ce4100;
-    color:#ffbf00;
+    background:#330022;
+    border:2px solid #ff6b35;
+    color:#ffbf80;
     text-decoration:none;
     border-radius:8px;
     font-weight:bold;
-    transition:all .3s;
+    transition:all .3s ease;
 }
 
 .card a:hover{
-    background:#ce4100;
-    color:white;
+    background:#ff6b35;
+    color:#10021e;
 }
 
-/* Footer spacing */
+/* Footer */
 footer{
     margin-top:60px;
     text-align:center;
     padding:20px 0;
-    color:#666;
+    color:#d9a566;
     font-size:.9rem;
 }
