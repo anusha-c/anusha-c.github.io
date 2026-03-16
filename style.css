@@ -11,7 +11,7 @@ body{
 .about-me {
     max-width: 900px;
     margin: 20px auto;
-    padding: 10px 15px;
+    padding: 5px 15px;
     background: linear-gradient(135deg, #2b002b, #4e003e); /* dark sunset gradient */
     border-left: 5px solid #ff6b35;                        /* sunset accent */
     border-radius: 12px;
@@ -29,14 +29,12 @@ body{
 
 .about-me h2 {
     color: #ff9a56;   /* bright sunset highlight */
-    font-family: "Darker Grotesque", sans-serif;
     font-size: 2rem;
     margin-bottom: 15px;
     font-weight: 700;
 }
 
 .about-me p {
-    font-family: "Darker Grotesque", sans-serif;
     margin-bottom: 15px;
 }
 
@@ -44,7 +42,7 @@ body{
 header{
     background: linear-gradient(135deg, #6b0039, #ff3f5e); /* deep sunset gradient */
     color:white;
-    padding:10px 10px;             /* taller header to fit large text */
+    padding:25px 10px;             /* taller header to fit large text */
     text-align:center;
     position: relative;
 }
@@ -55,7 +53,7 @@ header h1{
     font-size: 6vw;                /* responsive large size */
     line-height: 1.1;
     text-align: center;
-    color: #ff9a56;
+    color: #fbbb90;
     transition: text-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -70,7 +68,7 @@ header h1.glow {
 }
 
 header p{
-    margin-top:10px;
+    margin-top:5px;
     font-size:1.3rem;
     color: #ffe6cc;
 }
@@ -124,7 +122,6 @@ nav a:hover{
 }
 
 .pricing-card h3{
-    font-family: "Darker Grotesque", sans-serif;
     margin-bottom:10px;
     color:#ff9a56;
 }
