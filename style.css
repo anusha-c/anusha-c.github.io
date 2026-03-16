@@ -44,7 +44,7 @@ body{
 header{
     background: linear-gradient(135deg, #6b0039, #ff3f5e); /* deep sunset gradient */
     color:white;
-    padding:80px 20px;             /* taller header to fit large text */
+    padding:60px 10px;             /* taller header to fit large text */
     text-align:center;
     position: relative;
 }
