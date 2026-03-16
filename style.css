@@ -1,6 +1,6 @@
 /* Base styling */
 body{
-    font-family: 'Arial', sans-serif;
+    font-family: 'Noto Serif Display', serif;
     margin:0;
     padding:0;
     background:#10021e;
@@ -35,7 +35,7 @@ body{
 
 /* Header banner */
 header{
-    background:#ea8000; /* amber */
+    background:#cf4c00; /* amber */
     color:white;
     padding:60px 20px;
     text-align:center;
@@ -44,6 +44,7 @@ header{
 header h1{
     margin:0;
     font-size:2.8rem;
+
 }
 
 header p{
@@ -57,7 +58,7 @@ nav{
     justify-content:center;
     gap:30px;
     padding:15px 0;
-    background:white;
+    background:rgb(238, 197, 130);
     box-shadow:0 2px 10px rgba(0,0,0,0.08);
     position:sticky;
     top:0;
@@ -67,7 +68,7 @@ nav{
 nav a{
     text-decoration:none;
     font-weight:bold;
-    color:#333;
+    color:#aa4d00;
     transition:color .2s;
 }
 
