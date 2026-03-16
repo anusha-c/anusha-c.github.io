@@ -69,12 +69,12 @@ nav{
 nav a{
     text-decoration:none;
     font-weight:bold;
-    color:#aa4d00;
+    color:#ffe0c6;
     transition:color .2s;
 }
 
 nav a:hover{
-    color:#ffbf00;
+    color:#ce4100;
 }
 
 
@@ -119,7 +119,7 @@ nav a:hover{
 .price{
     font-size:22px;
     font-weight:bold;
-    color:#ffbf00;
+    color:#ce4100;
 }
 
 .contact-btn {
@@ -127,16 +127,16 @@ nav a:hover{
     margin-top: 15px;
     padding: 10px 20px;
     font-weight: bold;
-    color: #ffbf00;           /* amber border text */
+    color: #ce4100;           /* amber border text */
     background: white;         /* initial background */
-    border: 2px solid #ffbf00; /* amber border */
+    border: 2px solid #ce4100; /* amber border */
     border-radius: 8px;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-    background: #ffbf00;  /* amber fill on hover */
+    background: #ce4100;  /* amber fill on hover */
     color: rgb(255, 255, 255);          /* text turns white */
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
@@ -200,7 +200,7 @@ nav a:hover{
     margin-top:10px;
     padding:10px 18px;
     background:white;
-    border:2px solid #ffbf00;
+    border:2px solid #ce4100;
     color:#ffbf00;
     text-decoration:none;
     border-radius:8px;
@@ -209,7 +209,7 @@ nav a:hover{
 }
 
 .card a:hover{
-    background:#ffbf00;
+    background:#ce4100;
     color:white;
 }
 
