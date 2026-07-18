@@ -16,11 +16,12 @@
 
   <style>
     :root {
-      --bg: #101214;
-      --bg-glow: #1a2228;
-      --text: #f2f1ef;
-      --muted: #9a9ea3;
-      --accent: #b8c4ce;
+      --coffee: #1c120e;
+      --coffee-glow: #3d2418;
+      --mustard: #d4a017;
+      --hot-pink: #ff2d7a;
+      --text: #f6efe6;
+      --muted: #c4b5a5;
     }
 
     * {
@@ -36,12 +37,30 @@
       color: var(--text);
       padding: 2rem;
       font-family: "Manrope", sans-serif;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 0%, var(--bg-glow), transparent 65%),
-        var(--bg);
+      background-color: var(--coffee);
+      background-image:
+        radial-gradient(ellipse 90% 60% at 10% 15%, rgba(255, 45, 122, 0.28), transparent 55%),
+        radial-gradient(ellipse 80% 55% at 90% 5%, rgba(212, 160, 23, 0.32), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 60% 90%, rgba(90, 45, 28, 0.65), transparent 55%),
+        linear-gradient(155deg, #2a1810 0%, #1c120e 45%, #26140f 100%);
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
     }
 
     main {
+      position: relative;
+      z-index: 1;
       text-align: center;
       animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
@@ -53,6 +72,10 @@
       letter-spacing: -0.03em;
       margin: 0 0 1.5rem;
       line-height: 1;
+      background: linear-gradient(120deg, var(--text) 40%, var(--mustard) 75%, var(--hot-pink) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .email {
@@ -72,7 +95,7 @@
     }
 
     .email a:hover {
-      color: var(--text);
+      color: var(--mustard);
     }
 
     .icons {
@@ -83,7 +106,7 @@
     }
 
     .icons a {
-      color: var(--accent);
+      color: var(--mustard);
       font-size: 1.65rem;
       text-decoration: none;
       transition: transform 0.2s ease, color 0.2s ease;
@@ -91,7 +114,7 @@
 
     .icons a:hover {
       transform: translateY(-3px);
-      color: var(--text);
+      color: var(--hot-pink);
     }
 
     @keyframes rise {

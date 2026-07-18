@@ -16,13 +16,14 @@
 
   <style>
     :root {
-      --bg: #101214;
-      --bg-elevated: #171b1e;
-      --bg-glow: #1a2228;
-      --text: #f2f1ef;
-      --muted: #9a9ea3;
-      --accent: #b8c4ce;
-      --line: rgba(242, 241, 239, 0.12);
+      --coffee: #1c120e;
+      --coffee-deep: #140c09;
+      --coffee-mid: #2e1c14;
+      --mustard: #d4a017;
+      --hot-pink: #ff2d7a;
+      --text: #f6efe6;
+      --muted: #c4b5a5;
+      --line: rgba(246, 239, 230, 0.14);
       --nav-h: 3.5rem;
     }
 
@@ -37,10 +38,28 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: var(--bg);
       color: var(--text);
       font-family: "Manrope", sans-serif;
       font-weight: 300;
+      background-color: var(--coffee);
+      background-image:
+        radial-gradient(ellipse 90% 55% at 8% 12%, rgba(255, 45, 122, 0.26), transparent 55%),
+        radial-gradient(ellipse 80% 50% at 92% 8%, rgba(212, 160, 23, 0.3), transparent 52%),
+        radial-gradient(ellipse 65% 45% at 70% 85%, rgba(90, 45, 28, 0.55), transparent 55%),
+        linear-gradient(160deg, #2a1810 0%, #1c120e 42%, #24140f 100%);
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      opacity: 0.4;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
     }
 
     /* Sticky tabs */
@@ -53,7 +72,7 @@
       gap: clamp(1.5rem, 5vw, 3.5rem);
       height: var(--nav-h);
       align-items: center;
-      background: rgba(16, 18, 20, 0.85);
+      background: rgba(28, 18, 14, 0.82);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
@@ -84,11 +103,13 @@
     .tabs a:hover,
     .tabs a.is-active {
       color: var(--text);
-      border-bottom-color: var(--accent);
+      border-bottom-color: var(--hot-pink);
     }
 
     section {
       scroll-margin-top: var(--nav-h);
+      position: relative;
+      z-index: 1;
     }
 
     /* Hero */
@@ -99,10 +120,9 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 3rem 1.5rem 4rem;
+      padding: 3rem 1.25rem 4rem;
       position: relative;
       overflow: hidden;
-      background: var(--bg);
     }
 
     #home::before {
@@ -117,7 +137,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.55);
+      background:
+        linear-gradient(180deg, rgba(28, 18, 14, 0.35) 0%, rgba(20, 12, 9, 0.72) 100%),
+        rgba(0, 0, 0, 0.35);
       z-index: 0;
     }
 
@@ -129,18 +151,19 @@
     .site-link {
       position: absolute;
       top: 1.75rem;
-      left: 1.5rem;
+      left: 1rem;
       z-index: 2;
       color: var(--text);
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 400;
       letter-spacing: 0.04em;
-      opacity: 0.85;
-      transition: opacity 0.2s ease;
+      opacity: 0.9;
+      transition: color 0.2s ease, opacity 0.2s ease;
     }
 
     .site-link:hover {
+      color: var(--mustard);
       opacity: 1;
     }
 
@@ -151,12 +174,16 @@
       letter-spacing: -0.03em;
       margin: 0 0 1rem;
       line-height: 1;
+      background: linear-gradient(120deg, var(--text) 35%, var(--mustard) 70%, var(--hot-pink) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     #home .tagline {
       font-size: clamp(1rem, 2vw, 1.15rem);
-      color: rgba(242, 241, 239, 0.85);
+      color: rgba(246, 239, 230, 0.88);
       margin: 0 0 2.5rem;
       max-width: 28rem;
       line-height: 1.65;
@@ -179,13 +206,14 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       padding: 0.9rem 1.5rem;
-      border: 1px solid rgba(242, 241, 239, 0.35);
-      transition: background 0.25s ease, border-color 0.25s ease;
+      border: 1px solid rgba(246, 239, 230, 0.4);
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
 
     .hero-cta a:hover {
-      background: rgba(242, 241, 239, 0.1);
-      border-color: rgba(242, 241, 239, 0.8);
+      background: rgba(255, 45, 122, 0.18);
+      border-color: var(--hot-pink);
+      color: var(--text);
     }
 
     .scroll-hint {
@@ -200,17 +228,15 @@
       animation: bob 2.2s ease-in-out infinite;
     }
 
-    /* Portfolio */
+    /* Portfolio — edge-to-edge, orientation-aware */
     #portfolio {
-      padding: 4.5rem clamp(1rem, 3vw, 2.5rem) 5rem;
-      background:
-        radial-gradient(ellipse 60% 40% at 50% 0%, var(--bg-glow), transparent 70%),
-        var(--bg);
+      padding: 3.5rem 0 4rem;
     }
 
     .section-head {
       text-align: center;
-      margin-bottom: 2.75rem;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
     }
 
     .section-head h2 {
@@ -218,7 +244,7 @@
       font-size: clamp(2rem, 5vw, 3.25rem);
       font-weight: 600;
       letter-spacing: -0.03em;
-      margin: 0 0 0.6rem;
+      margin: 0 0 0.5rem;
     }
 
     .section-head p {
@@ -229,40 +255,45 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
-      gap: 0.75rem;
-      max-width: 1280px;
-      margin: 0 auto;
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      width: 100%;
+      padding: 0 0.35rem;
+      margin: 0;
+    }
+
+    @media (min-width: 720px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.45rem;
+        padding: 0 0.45rem;
+      }
     }
 
     .gallery-item {
       margin: 0;
       width: 100%;
-      aspect-ratio: 4 / 5;
       border: none;
       padding: 0;
       cursor: pointer;
-      background: var(--bg-elevated);
+      background: var(--coffee-mid);
       position: relative;
       overflow: hidden;
       display: block;
+      line-height: 0;
     }
 
-    .gallery-item:nth-child(5n + 1),
-    .gallery-item:nth-child(5n + 4) {
-      aspect-ratio: 3 / 4;
-    }
-
-    .gallery-item:nth-child(7n) {
-      aspect-ratio: 5 / 4;
+    /* Landscapes span full width and keep natural proportions */
+    .gallery-item.is-landscape {
+      grid-column: 1 / -1;
     }
 
     .gallery-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      vertical-align: middle;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
       opacity: 0;
     }
 
@@ -271,13 +302,13 @@
     }
 
     .gallery-item:hover img {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
 
     /* Bookings */
     #bookings {
-      padding: 4.5rem 1.5rem 6rem;
-      background: var(--bg-elevated);
+      padding: 4.5rem 1.25rem 6rem;
+      background: rgba(20, 12, 9, 0.55);
       border-top: 1px solid var(--line);
     }
 
@@ -313,13 +344,13 @@
       border: 1px solid var(--line);
       color: inherit;
       text-decoration: none;
-      background: transparent;
+      background: rgba(46, 28, 20, 0.45);
       transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
     }
 
     .booking-option:hover {
-      background: rgba(242, 241, 239, 0.04);
-      border-color: rgba(242, 241, 239, 0.35);
+      background: rgba(255, 45, 122, 0.12);
+      border-color: rgba(255, 45, 122, 0.55);
       transform: translateY(-2px);
     }
 
@@ -340,12 +371,12 @@
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(8, 9, 10, 0.94);
+      background: rgba(20, 12, 9, 0.94);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 100;
-      padding: 2rem;
+      padding: 1.25rem;
     }
 
     .lightbox.is-open {
@@ -353,16 +384,14 @@
     }
 
     .lightbox-inner {
-      max-width: min(92vw, 960px);
-      max-height: 85vh;
-      width: auto;
-      height: auto;
+      max-width: 96vw;
+      max-height: 90vh;
       position: relative;
     }
 
     .lightbox-inner img {
-      max-width: 92vw;
-      max-height: 85vh;
+      max-width: 96vw;
+      max-height: 90vh;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -376,18 +405,19 @@
       border: none;
       color: var(--text);
       cursor: pointer;
-      opacity: 0.8;
-      transition: opacity 0.2s ease;
+      opacity: 0.85;
+      transition: opacity 0.2s ease, color 0.2s ease;
     }
 
     .lightbox-close:hover,
     .lightbox-nav:hover {
       opacity: 1;
+      color: var(--mustard);
     }
 
     .lightbox-close {
       top: 1.25rem;
-      right: 1.5rem;
+      right: 1.25rem;
       font-size: 1.75rem;
     }
 
@@ -398,8 +428,8 @@
       padding: 1rem;
     }
 
-    .lightbox-nav.prev { left: 0.75rem; }
-    .lightbox-nav.next { right: 0.75rem; }
+    .lightbox-nav.prev { left: 0.5rem; }
+    .lightbox-nav.next { right: 0.5rem; }
 
     .lightbox-counter {
       position: absolute;
@@ -495,7 +525,6 @@
     (function () {
       const PHOTOS_DIR = "photos/";
 
-      // Source of truth for gallery (also kept in photos/manifest.json)
       const PHOTO_FILES = [
         "003_IMG_0772_websize.JPG",
         "003_IMG_0919_websize.JPG",
@@ -569,6 +598,16 @@
       );
       sections.forEach((section) => sectionObserver.observe(section));
 
+      function applyOrientation(item, img) {
+        if (img.naturalWidth >= img.naturalHeight) {
+          item.classList.add("is-landscape");
+          item.classList.remove("is-portrait");
+        } else {
+          item.classList.add("is-portrait");
+          item.classList.remove("is-landscape");
+        }
+      }
+
       function renderGallery() {
         const frag = document.createDocumentFragment();
 
@@ -581,11 +620,12 @@
 
           const img = document.createElement("img");
           img.alt = "Real estate photo " + (index + 1);
-          img.loading = index < 6 ? "eager" : "lazy";
+          img.loading = index < 4 ? "eager" : "lazy";
           img.decoding = "async";
 
           const markReady = () => {
             image.ready = true;
+            applyOrientation(item, img);
             item.classList.add("is-loaded");
           };
 
