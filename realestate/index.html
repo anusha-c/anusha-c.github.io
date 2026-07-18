@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link
     rel="stylesheet"
@@ -16,11 +16,13 @@
 
   <style>
     :root {
-      --bg: #d6c3ad;
-      --bg-deep: #c9b49a;
-      --text: #ffffff;
-      --placeholder: rgba(255, 255, 255, 0.22);
-      --placeholder-hover: rgba(255, 255, 255, 0.38);
+      --bg: #101214;
+      --bg-elevated: #171b1e;
+      --bg-glow: #1a2228;
+      --text: #f2f1ef;
+      --muted: #9a9ea3;
+      --accent: #b8c4ce;
+      --line: rgba(242, 241, 239, 0.12);
       --nav-h: 3.5rem;
     }
 
@@ -37,11 +39,11 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", sans-serif;
+      font-family: "Manrope", sans-serif;
       font-weight: 300;
     }
 
-    /* ——— Sticky tabs ——— */
+    /* Sticky tabs */
     .tabs {
       position: sticky;
       top: 0;
@@ -51,10 +53,10 @@
       gap: clamp(1.5rem, 5vw, 3.5rem);
       height: var(--nav-h);
       align-items: center;
-      background: rgba(214, 195, 173, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(16, 18, 20, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
@@ -68,30 +70,28 @@
     }
 
     .tabs a {
-      color: var(--text);
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      opacity: 0.65;
       padding: 0.4rem 0;
       border-bottom: 1px solid transparent;
-      transition: opacity 0.2s ease, border-color 0.2s ease;
+      transition: color 0.2s ease, border-color 0.2s ease;
     }
 
     .tabs a:hover,
     .tabs a.is-active {
-      opacity: 1;
-      border-bottom-color: rgba(255, 255, 255, 0.85);
+      color: var(--text);
+      border-bottom-color: var(--accent);
     }
 
-    /* ——— Sections ——— */
     section {
       scroll-margin-top: var(--nav-h);
     }
 
-    /* ——— Home / Hero ——— */
+    /* Hero */
     #home {
       min-height: 100vh;
       display: flex;
@@ -117,7 +117,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.55);
       z-index: 0;
     }
 
@@ -133,7 +133,9 @@
       z-index: 2;
       color: var(--text);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
       opacity: 0.85;
       transition: opacity 0.2s ease;
     }
@@ -143,47 +145,47 @@
     }
 
     #home h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3.2rem, 9vw, 6.5rem);
-      font-weight: 400;
-      letter-spacing: 0.02em;
+      font-family: "Syne", sans-serif;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
       margin: 0 0 1rem;
       line-height: 1;
-      animation: fadeIn 1s ease both;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     #home .tagline {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      letter-spacing: 0.06em;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(242, 241, 239, 0.85);
       margin: 0 0 2.5rem;
-      opacity: 0.9;
       max-width: 28rem;
-      line-height: 1.6;
-      animation: fadeIn 1s ease 0.15s both;
+      line-height: 1.65;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
     }
 
     .hero-cta {
       display: inline-flex;
-      gap: 1.25rem;
+      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-      animation: fadeIn 1s ease 0.3s both;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
     }
 
     .hero-cta a {
       color: var(--text);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
+      font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      padding: 0.85rem 1.6rem;
-      border: 1px solid rgba(255, 255, 255, 0.55);
+      padding: 0.9rem 1.5rem;
+      border: 1px solid rgba(242, 241, 239, 0.35);
       transition: background 0.25s ease, border-color 0.25s ease;
     }
 
     .hero-cta a:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.9);
+      background: rgba(242, 241, 239, 0.1);
+      border-color: rgba(242, 241, 239, 0.8);
     }
 
     .scroll-hint {
@@ -191,16 +193,19 @@
       bottom: 1.75rem;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      opacity: 0.55;
+      color: var(--muted);
       animation: bob 2.2s ease-in-out infinite;
     }
 
-    /* ——— Portfolio gallery ——— */
+    /* Portfolio */
     #portfolio {
       padding: 4.5rem clamp(1rem, 3vw, 2.5rem) 5rem;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, var(--bg-glow), transparent 70%),
+        var(--bg);
     }
 
     .section-head {
@@ -209,111 +214,71 @@
     }
 
     .section-head h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 400;
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
       margin: 0 0 0.6rem;
-      letter-spacing: 0.02em;
     }
 
     .section-head p {
       margin: 0;
-      opacity: 0.85;
-      font-size: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .gallery {
-      columns: 1;
-      column-gap: 0.85rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+      gap: 0.75rem;
       max-width: 1280px;
       margin: 0 auto;
     }
 
-    @media (min-width: 560px) {
-      .gallery {
-        columns: 2;
-      }
-    }
-
-    @media (min-width: 900px) {
-      .gallery {
-        columns: 3;
-      }
-    }
-
     .gallery-item {
-      break-inside: avoid;
-      margin: 0 0 0.85rem;
+      margin: 0;
       width: 100%;
+      aspect-ratio: 4 / 5;
       border: none;
       padding: 0;
       cursor: pointer;
-      background: var(--placeholder);
+      background: var(--bg-elevated);
       position: relative;
       overflow: hidden;
       display: block;
-      opacity: 0;
-      transform: translateY(28px) scale(0.98);
-      transition: background 0.3s ease;
     }
 
-    .gallery-item.is-visible {
-      animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    .gallery-item:nth-child(5n + 1),
+    .gallery-item:nth-child(5n + 4) {
+      aspect-ratio: 3 / 4;
     }
 
-    .gallery-item:hover {
-      background: var(--placeholder-hover);
+    .gallery-item:nth-child(7n) {
+      aspect-ratio: 5 / 4;
     }
 
     .gallery-item img {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      opacity: 0;
+    }
+
+    .gallery-item.is-loaded img {
+      opacity: 1;
     }
 
     .gallery-item:hover img {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
-    .gallery-item.is-empty img {
-      display: none;
-    }
-
-    .gallery-item.is-empty::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.16) 49.5%, rgba(255, 255, 255, 0.16) 50.5%, transparent 52%),
-        linear-gradient(225deg, transparent 48%, rgba(255, 255, 255, 0.16) 49.5%, rgba(255, 255, 255, 0.16) 50.5%, transparent 52%);
-      pointer-events: none;
-    }
-
-    /* Varied heights for masonry feel with empty placeholders */
-    .gallery-item[data-size="tall"] {
-      aspect-ratio: 3 / 4;
-    }
-
-    .gallery-item[data-size="wide"] {
-      aspect-ratio: 5 / 4;
-    }
-
-    .gallery-item[data-size="square"] {
-      aspect-ratio: 1 / 1;
-    }
-
-    .gallery-item[data-size="portrait"] {
-      aspect-ratio: 4 / 5;
-    }
-
-    /* ——— Bookings ——— */
+    /* Bookings */
     #bookings {
       padding: 4.5rem 1.5rem 6rem;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--line);
     }
 
     .bookings-panel {
@@ -323,57 +288,59 @@
     }
 
     .bookings-panel h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 400;
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
       margin: 0 0 0.75rem;
     }
 
     .bookings-panel > p {
       margin: 0 0 2.25rem;
-      opacity: 0.9;
+      color: var(--muted);
       line-height: 1.65;
     }
 
     .booking-options {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
     }
 
     .booking-option {
       display: block;
       padding: 1.35rem 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid var(--line);
       color: inherit;
       text-decoration: none;
+      background: transparent;
       transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
     }
 
     .booking-option:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.7);
+      background: rgba(242, 241, 239, 0.04);
+      border-color: rgba(242, 241, 239, 0.35);
       transform: translateY(-2px);
     }
 
     .booking-option strong {
       display: block;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.45rem;
-      font-weight: 400;
+      font-family: "Syne", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
       margin-bottom: 0.35rem;
     }
 
     .booking-option span {
       font-size: 0.9rem;
-      opacity: 0.85;
+      color: var(--muted);
     }
 
-    /* ——— Lightbox ——— */
+    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(90, 72, 55, 0.94);
+      background: rgba(8, 9, 10, 0.94);
       display: none;
       align-items: center;
       justify-content: center;
@@ -388,31 +355,18 @@
     .lightbox-inner {
       max-width: min(92vw, 960px);
       max-height: 85vh;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      background: var(--placeholder);
+      width: auto;
+      height: auto;
       position: relative;
-      animation: fadeIn 0.3s ease;
     }
 
     .lightbox-inner img {
-      width: 100%;
-      height: 100%;
+      max-width: 92vw;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
       object-fit: contain;
-      display: none;
-    }
-
-    .lightbox-inner.has-image img {
       display: block;
-    }
-
-    .lightbox-inner.is-empty::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.18) 49.5%, rgba(255, 255, 255, 0.18) 50.5%, transparent 52%),
-        linear-gradient(225deg, transparent 48%, rgba(255, 255, 255, 0.18) 49.5%, rgba(255, 255, 255, 0.18) 50.5%, transparent 52%);
     }
 
     .lightbox-close,
@@ -422,7 +376,7 @@
       border: none;
       color: var(--text);
       cursor: pointer;
-      opacity: 0.85;
+      opacity: 0.8;
       transition: opacity 0.2s ease;
     }
 
@@ -444,33 +398,27 @@
       padding: 1rem;
     }
 
-    .lightbox-nav.prev {
-      left: 0.75rem;
-    }
-
-    .lightbox-nav.next {
-      right: 0.75rem;
-    }
+    .lightbox-nav.prev { left: 0.75rem; }
+    .lightbox-nav.next { right: 0.75rem; }
 
     .lightbox-counter {
       position: absolute;
       bottom: 1.25rem;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      opacity: 0.85;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes riseIn {
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
@@ -480,9 +428,7 @@
     }
 
     @media (max-width: 600px) {
-      .lightbox-nav {
-        font-size: 1.4rem;
-      }
+      .lightbox-nav { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -536,7 +482,7 @@
     <button type="button" class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous image">
       <i class="fa-solid fa-chevron-left"></i>
     </button>
-    <div class="lightbox-inner is-empty" id="lightbox-inner">
+    <div class="lightbox-inner" id="lightbox-inner">
       <img id="lightbox-img" alt="" />
     </div>
     <button type="button" class="lightbox-nav next" id="lightbox-next" aria-label="Next image">
@@ -548,24 +494,55 @@
   <script>
     (function () {
       const PHOTOS_DIR = "photos/";
-      const SIZES = ["tall", "wide", "square", "portrait", "tall", "square", "wide"];
+
+      // Source of truth for gallery (also kept in photos/manifest.json)
+      const PHOTO_FILES = [
+        "003_IMG_0772_websize.JPG",
+        "003_IMG_0919_websize.JPG",
+        "004_IMG_0901_websize.JPG",
+        "007_IMG_0771_websize.JPG",
+        "013_IMG_1053_websize.JPG",
+        "014_IMG_1071_websize.JPG",
+        "015_IMG_1058_websize.JPG",
+        "021_IMG_1092_websize.JPG",
+        "032_IMG_1200_websize.JPG",
+        "039_IMG_1131_websize.JPG",
+        "040_IMG_0966_2_websize.JPG",
+        "1_websize.JPG",
+        "25_websize.JPG",
+        "IMG_0480-HDR-2_websize.JPG",
+        "IMG_0483-HDR-2_websize.JPG",
+        "IMG_0492-HDR-2_websize.JPG",
+        "IMG_0573-HDR_websize.JPG",
+        "IMG_0639-HDR_websize.JPG",
+        "IMG_0673-HDR_websize.JPG",
+        "IMG_1636_websize.JPG",
+        "IMG_1639_websize.JPG",
+        "IMG_1688_websize.JPG",
+        "IMG_1719_websize.JPG",
+        "IMG_1828_websize.JPG",
+        "IMG_1948_websize.JPG",
+        "IMG_1986_websize.JPG"
+      ];
 
       const tabs = document.getElementById("tabs");
       const tabLinks = tabs.querySelectorAll("a");
       const homeSection = document.getElementById("home");
       const gallery = document.getElementById("gallery");
       const lightbox = document.getElementById("lightbox");
-      const lightboxInner = document.getElementById("lightbox-inner");
       const lightboxImg = document.getElementById("lightbox-img");
       const lightboxCounter = document.getElementById("lightbox-counter");
       const closeBtn = document.getElementById("lightbox-close");
       const prevBtn = document.getElementById("lightbox-prev");
       const nextBtn = document.getElementById("lightbox-next");
 
-      let images = [];
+      const images = PHOTO_FILES.map((name) => ({
+        src: PHOTOS_DIR + encodeURIComponent(name).replace(/%2F/gi, "/"),
+        ready: false,
+      }));
+
       let currentIndex = 0;
 
-      /* Sticky tabs: show after leaving the hero */
       const tabObserver = new IntersectionObserver(
         ([entry]) => {
           tabs.classList.toggle("is-visible", !entry.isIntersecting);
@@ -574,7 +551,6 @@
       );
       tabObserver.observe(homeSection);
 
-      /* Active tab while scrolling */
       const sections = ["home", "portfolio", "bookings"].map((id) =>
         document.getElementById(id)
       );
@@ -594,37 +570,32 @@
       sections.forEach((section) => sectionObserver.observe(section));
 
       function renderGallery() {
-        gallery.replaceChildren();
         const frag = document.createDocumentFragment();
 
         images.forEach((image, index) => {
           const item = document.createElement("button");
           item.type = "button";
-          item.className = "gallery-item is-empty";
-          item.dataset.size = SIZES[index % SIZES.length];
+          item.className = "gallery-item";
           item.setAttribute("role", "listitem");
           item.setAttribute("aria-label", "Portfolio image " + (index + 1));
-          item.style.animationDelay = ((index % 9) * 0.05) + "s";
 
           const img = document.createElement("img");
           img.alt = "Real estate photo " + (index + 1);
-          img.loading = "lazy";
+          img.loading = index < 6 ? "eager" : "lazy";
           img.decoding = "async";
 
           const markReady = () => {
             image.ready = true;
-            item.classList.remove("is-empty");
+            item.classList.add("is-loaded");
           };
 
           img.addEventListener("load", markReady);
           img.addEventListener("error", () => {
             image.ready = false;
-            img.removeAttribute("src");
-            item.classList.add("is-empty");
+            console.warn("Failed to load:", image.src);
           });
           img.src = image.src;
 
-          // Cached images may finish before the load listener is attached
           if (img.complete && img.naturalWidth > 0) {
             markReady();
           }
@@ -634,23 +605,7 @@
           frag.appendChild(item);
         });
 
-        gallery.appendChild(frag);
-        observeGalleryItems();
-      }
-
-      function observeGalleryItems() {
-        const items = gallery.querySelectorAll(".gallery-item");
-        const io = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-        );
-        items.forEach((item) => io.observe(item));
+        gallery.replaceChildren(frag);
       }
 
       function openLightbox(index) {
@@ -671,18 +626,8 @@
       function updateLightbox() {
         const image = images[currentIndex];
         lightboxCounter.textContent = (currentIndex + 1) + " / " + images.length;
-
-        if (image && image.ready) {
-          lightboxImg.src = image.src;
-          lightboxImg.alt = "Real estate photo " + (currentIndex + 1);
-          lightboxInner.classList.add("has-image");
-          lightboxInner.classList.remove("is-empty");
-        } else {
-          lightboxImg.removeAttribute("src");
-          lightboxImg.alt = "";
-          lightboxInner.classList.remove("has-image");
-          lightboxInner.classList.add("is-empty");
-        }
+        lightboxImg.src = image.src;
+        lightboxImg.alt = "Real estate photo " + (currentIndex + 1);
       }
 
       function showNext(delta) {
@@ -703,19 +648,7 @@
         if (e.key === "ArrowRight") showNext(1);
       });
 
-      fetch(PHOTOS_DIR + "manifest.json")
-        .then((res) => {
-          if (!res.ok) throw new Error("Failed to load photo manifest");
-          return res.json();
-        })
-        .then((filenames) => {
-          images = filenames.map((name) => ({
-            src: PHOTOS_DIR + name,
-            ready: false,
-          }));
-          renderGallery();
-        })
-        .catch((err) => console.error(err));
+      renderGallery();
     })();
   </script>
 </body>
