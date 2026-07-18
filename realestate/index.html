@@ -138,10 +138,30 @@
     #home .tagline {
       font-size: clamp(1rem, 2vw, 1.15rem);
       color: rgba(246, 239, 230, 0.88);
-      margin: 0 0 2.5rem;
+      margin: 0 0 1.25rem;
       max-width: 28rem;
       line-height: 1.65;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+    }
+
+    #home .features {
+      list-style: none;
+      margin: 0 0 2.5rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      color: rgba(246, 239, 230, 0.78);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    }
+
+    #home .features li::before {
+      content: "–";
+      margin-right: 0.45rem;
+      color: var(--mustard);
     }
 
     .hero-cta {
@@ -185,26 +205,6 @@
     /* Portfolio — edge-to-edge, orientation-aware */
     #portfolio {
       padding: 3.5rem 0 4rem;
-    }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding: 0 1rem;
-    }
-
-    .section-head h2 {
-      font-family: "Syne", sans-serif;
-      font-size: clamp(2rem, 5vw, 3.25rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin: 0 0 0.5rem;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
     }
 
     .gallery {
@@ -322,13 +322,13 @@
 
     /* Bookings */
     #bookings {
-      padding: 4.5rem 1.25rem 6rem;
+      padding: 4.5rem 1rem 6rem;
       background: rgba(20, 12, 9, 0.55);
       border-top: 1px solid var(--line);
     }
 
     .bookings-panel {
-      max-width: 32rem;
+      max-width: 720px;
       margin: 0 auto;
       text-align: center;
     }
@@ -342,44 +342,37 @@
     }
 
     .bookings-panel > p {
-      margin: 0 0 2.25rem;
+      margin: 0 0 1.75rem;
       color: var(--muted);
       line-height: 1.65;
     }
 
-    .booking-options {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .booking-option {
-      display: block;
-      padding: 1.35rem 1.5rem;
+    .calendar-embed {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
       border: 1px solid var(--line);
-      color: inherit;
-      text-decoration: none;
-      background: rgba(46, 28, 20, 0.45);
-      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
     }
 
-    .booking-option:hover {
-      background: rgba(255, 45, 122, 0.12);
-      border-color: rgba(255, 45, 122, 0.55);
-      transform: translateY(-2px);
-    }
-
-    .booking-option strong {
+    .calendar-embed iframe {
       display: block;
-      font-family: "Syne", sans-serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
+      width: 100%;
+      height: 600px;
+      border: 0;
     }
 
-    .booking-option span {
-      font-size: 0.9rem;
-      color: var(--muted);
+    .pricing-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--mustard);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+
+    .pricing-link:hover {
+      color: var(--hot-pink);
     }
 
     /* Lightbox */
@@ -482,18 +475,20 @@
     <a class="site-link" href="/"><i class="fa-solid fa-arrow-left"></i> Home</a>
     <h1>Real Estate</h1>
     <p class="tagline">Photography that lets spaces speak for themselves.</p>
+    <ul class="features">
+      <li>MLS-ready</li>
+      <li>High Definition Resolution</li>
+      <li>Media for properties of all sizes and conditions</li>
+    </ul>
     <div class="hero-cta">
       <a href="#portfolio">View portfolio</a>
+      <a href="mailto:hello@anushachoudhary.com?subject=Real%20Estate%20Photography%20Pricing%20Request&body=Hi%2C%0A%0AI%27d%20like%20to%20request%20a%20pricing%20plan%20for%20real%20estate%20photography.%0A%0AProperty%20address%3A%20%0AProperty%20type%3A%20%0AApproximate%20square%20footage%3A%20%0APreferred%20shoot%20date%3A%20%0AAdditional%20notes%3A%20%0A%0AThank%20you!">Request pricing</a>
       <a href="#bookings">Book a session</a>
     </div>
     <div class="scroll-hint" aria-hidden="true">Scroll</div>
   </section>
 
   <section id="portfolio">
-    <div class="section-head">
-      <h2>Portfolio</h2>
-      <p>A gallery of real estate photography.</p>
-    </div>
     <div class="gallery is-collapsed" id="gallery" role="list" aria-label="Real estate portfolio"></div>
     <div class="see-more-wrap" id="see-more-wrap">
       <button type="button" class="see-more" id="see-more">See more</button>
@@ -502,18 +497,23 @@
 
   <section id="bookings">
     <div class="bookings-panel">
-      <h2>Bookings</h2>
-      <p>Ready to showcase a listing? Reach out to schedule a shoot.</p>
-      <div class="booking-options">
-        <a class="booking-option" href="mailto:hello@anushachoudhary.com?subject=Real%20Estate%20Photography%20Booking">
-          <strong>Email to book</strong>
-          <span>hello@anushachoudhary.com</span>
-        </a>
-        <a class="booking-option" href="mailto:hello@anushachoudhary.com?subject=Real%20Estate%20Photography%20Inquiry">
-          <strong>Ask a question</strong>
-          <span>Availability, packages, or timing</span>
-        </a>
+      <h2>Book a session</h2>
+      <p>Pick a time that works for you.</p>
+      <!-- Google Calendar Appointment Scheduling begin -->
+      <div class="calendar-embed">
+        <iframe
+          src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0LSs6huizWFIrJq3cJlXbwbmk8RuTx-kjGENJcU8pQUj9xL2owXMvojZMdOe69HToAT339La4j?gv=true"
+          title="Schedule a real estate photography session"
+          width="100%"
+          height="600"
+          frameborder="0"
+        ></iframe>
       </div>
+      <!-- end Google Calendar Appointment Scheduling -->
+      <a
+        class="pricing-link"
+        href="mailto:hello@anushachoudhary.com?subject=Real%20Estate%20Photography%20Pricing%20Request&body=Hi%2C%0A%0AI%27d%20like%20to%20request%20a%20pricing%20plan%20for%20real%20estate%20photography.%0A%0AProperty%20address%3A%20%0AProperty%20type%3A%20%0AApproximate%20square%20footage%3A%20%0APreferred%20shoot%20date%3A%20%0AAdditional%20notes%3A%20%0A%0AThank%20you!"
+      >Prefer to request pricing by email instead?</a>
     </div>
   </section>
 
