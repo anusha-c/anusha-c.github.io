@@ -210,6 +210,7 @@
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: dense;
       gap: 0.4rem;
       width: 100%;
       padding: 0 0.35rem;
@@ -222,6 +223,10 @@
         gap: 0.45rem;
         padding: 0 0.45rem;
       }
+    }
+
+    .gallery.is-collapsed .gallery-item.is-extra {
+      display: none;
     }
 
     .gallery-item {
@@ -246,6 +251,28 @@
       aspect-ratio: 3 / 2;
     }
 
+    /* Mosaic hero tiles — filenames containing BIG */
+    .gallery-item.is-big {
+      grid-column: span 2;
+      aspect-ratio: 16 / 10;
+    }
+
+    @media (min-width: 900px) {
+      .gallery-item.is-big {
+        grid-row: span 2;
+        aspect-ratio: auto;
+        min-height: 100%;
+      }
+
+      .gallery-item.is-big.is-portrait {
+        aspect-ratio: 3 / 4;
+      }
+
+      .gallery-item.is-big.is-landscape {
+        aspect-ratio: 4 / 3;
+      }
+    }
+
     .gallery-item img {
       width: 100%;
       height: 100%;
@@ -261,6 +288,36 @@
 
     .gallery-item:hover img {
       transform: scale(1.03);
+    }
+
+    .see-more-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 1.75rem 1rem 0.5rem;
+    }
+
+    .see-more {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(246, 239, 230, 0.4);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.6rem;
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .see-more:hover {
+      background: rgba(255, 45, 122, 0.18);
+      border-color: var(--hot-pink);
+    }
+
+    .see-more-wrap.is-hidden {
+      display: none;
     }
 
     /* Bookings */
@@ -437,7 +494,10 @@
       <h2>Portfolio</h2>
       <p>A gallery of real estate photography.</p>
     </div>
-    <div class="gallery" id="gallery" role="list" aria-label="Real estate portfolio"></div>
+    <div class="gallery is-collapsed" id="gallery" role="list" aria-label="Real estate portfolio"></div>
+    <div class="see-more-wrap" id="see-more-wrap">
+      <button type="button" class="see-more" id="see-more">See more</button>
+    </div>
   </section>
 
   <section id="bookings">
@@ -476,8 +536,12 @@
   <script>
     (function () {
       const PHOTOS_DIR = "photos/";
+      const PREVIEW_COUNT = 5;
 
       const PHOTO_FILES = [
+        "IMG_1986_websize_BIG.JPG",
+        "IMG_1828_websize.JPG",
+        "IMG_1948_websize.JPG",
         "003_IMG_0772_websize.JPG",
         "003_IMG_0919_websize.JPG",
         "004_IMG_0901_websize.JPG",
@@ -500,13 +564,12 @@
         "IMG_1636_websize.JPG",
         "IMG_1639_websize.JPG",
         "IMG_1688_websize.JPG",
-        "IMG_1719_websize.JPG",
-        "IMG_1828_websize.JPG",
-        "IMG_1948_websize.JPG",
-        "IMG_1986_websize.JPG"
+        "IMG_1719_websize.JPG"
       ];
 
       const gallery = document.getElementById("gallery");
+      const seeMoreWrap = document.getElementById("see-more-wrap");
+      const seeMoreBtn = document.getElementById("see-more");
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
       const lightboxCounter = document.getElementById("lightbox-counter");
@@ -515,11 +578,18 @@
       const nextBtn = document.getElementById("lightbox-next");
 
       const images = PHOTO_FILES.map((name) => ({
+        name: name,
         src: PHOTOS_DIR + encodeURIComponent(name).replace(/%2F/gi, "/"),
         ready: false,
+        big: /big/i.test(name),
       }));
 
       let currentIndex = 0;
+      let expanded = false;
+
+      function visibleCount() {
+        return expanded ? images.length : Math.min(PREVIEW_COUNT, images.length);
+      }
 
       function applyOrientation(item, img) {
         if (img.naturalWidth >= img.naturalHeight) {
@@ -538,12 +608,14 @@
           const item = document.createElement("button");
           item.type = "button";
           item.className = "gallery-item";
+          if (image.big) item.classList.add("is-big");
+          if (index >= PREVIEW_COUNT) item.classList.add("is-extra");
           item.setAttribute("role", "listitem");
           item.setAttribute("aria-label", "Portfolio image " + (index + 1));
 
           const img = document.createElement("img");
           img.alt = "Real estate photo " + (index + 1);
-          img.loading = index < 4 ? "eager" : "lazy";
+          img.loading = index < PREVIEW_COUNT ? "eager" : "lazy";
           img.decoding = "async";
 
           const markReady = () => {
@@ -569,9 +641,12 @@
         });
 
         gallery.replaceChildren(frag);
+        gallery.classList.toggle("is-collapsed", !expanded);
+        seeMoreWrap.classList.toggle("is-hidden", expanded || images.length <= PREVIEW_COUNT);
       }
 
       function openLightbox(index) {
+        if (!expanded && index >= PREVIEW_COUNT) return;
         currentIndex = index;
         updateLightbox();
         lightbox.hidden = false;
@@ -588,15 +663,22 @@
 
       function updateLightbox() {
         const image = images[currentIndex];
-        lightboxCounter.textContent = (currentIndex + 1) + " / " + images.length;
+        lightboxCounter.textContent = (currentIndex + 1) + " / " + visibleCount();
         lightboxImg.src = image.src;
         lightboxImg.alt = "Real estate photo " + (currentIndex + 1);
       }
 
       function showNext(delta) {
-        currentIndex = (currentIndex + delta + images.length) % images.length;
+        const max = visibleCount();
+        currentIndex = (currentIndex + delta + max) % max;
         updateLightbox();
       }
+
+      seeMoreBtn.addEventListener("click", () => {
+        expanded = true;
+        gallery.classList.remove("is-collapsed");
+        seeMoreWrap.classList.add("is-hidden");
+      });
 
       closeBtn.addEventListener("click", closeLightbox);
       prevBtn.addEventListener("click", () => showNext(-1));
